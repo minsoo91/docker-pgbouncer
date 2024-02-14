@@ -54,6 +54,8 @@ if [ -n "$DB_USER" -a -n "$DB_PASSWORD" -a -e "${_AUTH_FILE}" ] && ! grep -q "^\
      pass="md5$(echo -n "$DB_PASSWORD$DB_USER" | md5sum | cut -f 1 -d ' ')"
   fi
   echo "\"$DB_USER\" \"$pass\"" >> ${PG_CONFIG_DIR}/userlist.txt
+  # Test config
+  echo "\"datadog\" \"password\"" >> ${PG_CONFIG_DIR}/userlist.txt
   echo "Wrote authentication credentials to ${PG_CONFIG_DIR}/userlist.txt"
 fi
 
